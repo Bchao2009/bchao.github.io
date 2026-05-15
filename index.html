@@ -9,12 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --card-bg: #111111;
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
             --accent: #ffffff;
-            --text-main: #f0f0f0;
-            --text-dim: #777777;
-            --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-main: #e0e0e0;
+            --text-dim: #888888;
+            --transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,81 +29,78 @@
 
         html { scroll-behavior: smooth; }
 
-        /* --- Animations --- */
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(40px); 
-            transition: var(--transition-slow); 
-        }
+        /* --- Advanced Animations --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: var(--transition); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: var(--transition); }
         
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: var(--transition-slow);
-        }
+        .active { opacity: 1; transform: translate(0); }
 
-        .active { 
-            opacity: 1; 
-            transform: translate(0); 
-        }
-
-        /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 0; width: 100%; padding: 1.5rem 10%;
+            top: 0; width: 100%; padding: 2rem;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #1a1a1a;
+            z-index: 1000; background: linear-gradient(to bottom, rgba(10,10,10,1), rgba(10,10,10,0));
+            backdrop-filter: blur(5px);
         }
 
-        .logo { font-weight: 900; letter-spacing: -1px; font-size: 1.1rem; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .logo { font-weight: 900; letter-spacing: -1px; font-size: 1.2rem; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        /* --- Hero --- */
         header { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
-        .hero-tagline { color: var(--text-dim); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; margin-bottom: 1.5rem; }
-        h1 { font-size: clamp(3rem, 10vw, 7.5rem); font-weight: 900; line-height: 0.85; margin-bottom: 2rem; letter-spacing: -4px; }
-        .hero-desc { max-width: 600px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+        .hero-tagline { color: var(--text-dim); text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 1rem; }
+        h1 { font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 900; line-height: 0.9; margin-bottom: 2rem; letter-spacing: -3px; }
+        .hero-desc { max-width: 650px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
+        .highlight { color: var(--accent); font-weight: 700; }
 
-        /* --- General Section Layout --- */
-        section { padding: 100px 10%; border-bottom: 1px solid #111; }
-        .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--text-dim); margin-bottom: 2rem; display: block; }
+        section { padding: 120px 10%; }
+        .section-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 5px; color: var(--text-dim); margin-bottom: 3rem; display: flex; align-items: center; }
+        .section-title::after { content: ""; height: 1px; flex-grow: 1; background: #333; margin-left: 20px; }
 
-        /* --- Mission Section --- */
-        .mission-text { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; max-width: 1000px; }
-        .highlight { color: var(--accent); }
-
-        /* --- Work Grid --- */
-        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); gap: 3rem; margin-top: 2rem; }
-        .work-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.4s; }
-        .work-card:hover { border-color: #444; transform: translateY(-5px); }
-        .image-slot { width: 100%; aspect-ratio: 16/10; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #333; font-weight: 700; }
-        .work-info { padding: 2rem; }
-        .work-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-        .work-info p { color: var(--text-dim); font-size: 0.9rem; }
-
-        /* --- Athletics --- */
-        .athletics-flex { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
-        .stat-box { flex: 1; min-width: 300px; }
-        .stat-row { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 1.5rem 0; }
-        .stat-label { font-weight: 300; color: var(--text-dim); }
-        .stat-value { font-weight: 900; font-size: 1.5rem; }
-
-        /* --- Footer --- */
-        footer { padding: 120px 10%; text-align: center; background: #000; }
-        .cta-btn { 
-            display: inline-block; padding: 1.2rem 3rem; background: var(--accent); color: #000; 
-            text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 0.9rem; 
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; margin-top: 2rem;
+        /* Work Grid */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; }
+        .work-item { position: relative; }
+        .work-image { 
+            width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 12px; margin-bottom: 1.5rem; 
+            overflow: hidden; display: flex; align-items: center; justify-content: center; color: #444; font-weight: 700;
+            border: 1px solid #222; transition: 0.4s;
         }
-        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,255,255,0.1); }
+        .work-item:hover .work-image { border-color: #555; }
+        .work-item h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .work-item p { color: var(--text-dim); font-size: 0.95rem; }
 
-        @media (max-width: 768px) { 
-            .nav-links { display: none; }
-            .work-grid { grid-template-columns: 1fr; }
+        /* Athletics Section */
+        .athletics-container { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
+        .athletics-stats { flex: 1; min-width: 300px; }
+        .stat-card { border-bottom: 1px solid #222; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .stat-name { color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
+        .stat-value { font-size: 2rem; font-weight: 900; color: var(--accent); }
+
+        /* Stats Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid #222; transition: var(--transition); }
+
+        /* Contact Footer */
+        footer { padding: 120px 10%; border-top: 1px solid #222; text-align: center; }
+        .get-in-touch {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            transition: 0.3s;
         }
+        .get-in-touch:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
+        .email-link { font-size: 1.2rem; color: var(--text-dim); text-decoration: none; display: block; margin-bottom: 1rem; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } .work-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -112,104 +109,98 @@
         <div class="logo">BRANDON CHAO</div>
         <div class="nav-links">
             <a href="#mission">Philosophy</a>
-            <a href="#work">Projects</a>
+            <a href="#work">Work</a>
             <a href="#athletics">Athletics</a>
-            <a href="#contact">Contact</a>
+            <a href="#leadership">Leadership</a>
         </div>
     </nav>
 
     <header>
         <div class="reveal">
             <p class="hero-tagline">Sophomore @ TBS • Athlete • Growing Engineer</p>
-            <h1>Leadership<br>Built Differently.</h1>
+            <h1>Leading Through<br>Technology.</h1>
             <p class="hero-desc">
-                Combining <span class="highlight">engineering principles</span> with <span class="highlight">community leadership</span> to drive organizational impact.
+                Focusing on the intersection of <span class="highlight">engineering excellence</span> and <span class="highlight">community leadership</span> to build a high-performance organization.
             </p>
         </div>
     </header>
 
     <section id="mission">
-        <span class="section-label">Our Mission</span>
-        <div class="mission-text reveal-left">
-            I work to combine <span class="highlight">leadership within the engineering field</span>—integrating technical excellence with the discipline of a captain to build stronger organizations.
+        <div class="section-title">Philosophy</div>
+        <div class="reveal-left" style="font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.3; max-width: 900px;">
+            I work to combine <span class="highlight">leadership within the engineering field</span>—leveraging technical discipline, data-driven strategy, and collaborative systems to strengthen the organizations I lead.
         </div>
     </section>
 
-    <section id="work">
-        <span class="section-label">Selected Work</span>
+    <section id="work" style="background: #0d0d0d;">
+        <div class="section-title">Recent Work</div>
         <div class="work-grid">
-            <div class="work-card reveal">
-                <div class="image-slot">[ Image: Robotics Competition ]</div>
-                <div class="work-info">
-                    <h3>FTC Ex Nihilo Captaincy</h3>
-                    <p>Directing team strategy, hardware scouting, and engineering design cycles for Team 10539.</p>
-                </div>
+            <div class="work-item reveal">
+                <div class="work-image">[ Image: FTC Robotics Build/Competition ]</div>
+                <h3>FTC Ex Nihilo Org</h3>
+                <p>Leading as Captain of Team 10539. Managing engineering design cycles and implementing advanced scouting systems.</p>
             </div>
-            <div class="work-card reveal" style="transition-delay: 0.2s;">
-                <div class="image-slot">[ Image: Demographic Data ]</div>
-                <div class="work-info">
-                    <h3>UN Demographic Research</h3>
-                    <p>In-depth analysis of declining birth rates and global demographic shifts.</p>
-                </div>
-            </div>
-            <div class="work-card reveal">
-                <div class="image-slot">[ Image: Student Council Session ]</div>
-                <div class="work-info">
-                    <h3>Student Council Advocacy</h3>
-                    <p>Passed 20+ proposals including vending machines and lunch-time extensions at TBS.</p>
-                </div>
-            </div>
-            <div class="work-card reveal" style="transition-delay: 0.2s;">
-                <div class="image-slot">[ Image: Python Automation ]</div>
-                <div class="work-info">
-                    <h3>Technical Projects</h3>
-                    <p>Columbia University Python Certification & CAD development in Onshape.</p>
-                </div>
+
+            <div class="work-item reveal" style="transition-delay: 0.1s;">
+                <div class="work-image">[ Image: UN Research Graphs ]</div>
+                <h3>UN Demographic Research</h3>
+                <p>Investigating the socio-economic impacts of declining birth rates and global demographic shifts.</p>
             </div>
         </div>
     </section>
 
-    <section id="athletics" style="background: #080808;">
-        <span class="section-label">Athletic Discipline</span>
-        <div class="athletics-flex">
-            <div class="stat-box reveal-left">
-                <div class="stat-row">
-                    <span class="stat-label">4x Track Captain</span>
+    <section id="athletics">
+        <div class="section-title">Athletic Discipline</div>
+        <div class="athletics-container">
+            <div class="athletics-stats reveal-left">
+                <div class="stat-card">
+                    <span class="stat-name">4x Track Captain</span>
                     <span class="stat-value">Leadership</span>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-label">1-Mile PR</span>
+                <div class="stat-card">
+                    <span class="stat-name">1-Mile PR</span>
                     <span class="stat-value">4:47</span>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-label">2-Mile PR</span>
+                <div class="stat-card">
+                    <span class="stat-name">2-Mile PR</span>
                     <span class="stat-value">10:30</span>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-label">Training Consistency</span>
-                    <span class="stat-value">Year-Round</span>
-                </div>
+                <p style="margin-top: 2rem; color: var(--text-dim);">Applying the mental toughness and consistency of long-distance training to academic and engineering challenges.</p>
             </div>
-            <div class="work-card reveal" style="flex: 1; min-width: 300px;">
-                <div class="image-slot" style="aspect-ratio: 1/1;">[ Image: Track Action Shot ]</div>
+            <div class="athletics-image reveal-right" style="flex: 1; min-width: 300px;">
+                <div class="work-image" style="aspect-ratio: 1/1;">[ Image: Track Action Shot ]</div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <section id="leadership" style="background: #0d0d0d;">
+        <div class="section-title">Leadership Highlights</div>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>20+ Proposals Passed</h3>
+                <p>Represented the student body for 2 years, securing approvals for vending machines and extended lunch periods.</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>Technical Mastery</h3>
+                <p>Certified in Columbia University's Intro to Python; proficient in Onshape CAD for rapid prototyping.</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.2s;">
+                <h3>Academic Core</h3>
+                <p>Managing a rigorous load including Chemistry, Accelerated Algebra 2, and Engineering Principles.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <div class="reveal">
-            <p class="hero-tagline">Ready to Build?</p>
-            <h2 style="font-size: 3rem; margin-bottom: 1rem;">Let's get in touch.</h2>
-            <p style="color: var(--text-dim);">bchao@browning.edu</p>
-            <a href="mailto:bchao@browning.edu" class="cta-btn">Get In Touch</a>
+            <a href="mailto:bchao@browning.edu" class="get-in-touch">Get In Touch</a>
+            <a href="mailto:bchao@browning.edu" class="email-link">bchao@browning.edu</a>
+            <p style="color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">The Browning School • Class of 2028</p>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer to trigger "Cool" animations
-        const observerOptions = {
-            threshold: 0.15
-        };
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -219,9 +210,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal, .reveal-left').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
