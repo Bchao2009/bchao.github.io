@@ -81,4 +81,147 @@
         .work-card:hover { border-color: #444; transform: translateY(-5px); }
         .image-slot { width: 100%; aspect-ratio: 16/10; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #333; font-weight: 700; }
         .work-info { padding: 2rem; }
-        .work-info
+        .work-info h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .work-info p { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* --- Athletics --- */
+        .athletics-flex { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
+        .stat-box { flex: 1; min-width: 300px; }
+        .stat-row { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 1.5rem 0; }
+        .stat-label { font-weight: 300; color: var(--text-dim); }
+        .stat-value { font-weight: 900; font-size: 1.5rem; }
+
+        /* --- Footer --- */
+        footer { padding: 120px 10%; text-align: center; background: #000; }
+        .cta-btn { 
+            display: inline-block; padding: 1.2rem 3rem; background: var(--accent); color: #000; 
+            text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 0.9rem; 
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; margin-top: 2rem;
+        }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,255,255,0.1); }
+
+        @media (max-width: 768px) { 
+            .nav-links { display: none; }
+            .work-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BRANDON CHAO</div>
+        <div class="nav-links">
+            <a href="#mission">Philosophy</a>
+            <a href="#work">Projects</a>
+            <a href="#athletics">Athletics</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="reveal">
+            <p class="hero-tagline">Sophomore @ TBS • Athlete • Growing Engineer</p>
+            <h1>Leadership<br>Built Differently.</h1>
+            <p class="hero-desc">
+                Combining <span class="highlight">engineering principles</span> with <span class="highlight">community leadership</span> to drive organizational impact.
+            </p>
+        </div>
+    </header>
+
+    <section id="mission">
+        <span class="section-label">Our Mission</span>
+        <div class="mission-text reveal-left">
+            I work to combine <span class="highlight">leadership within the engineering field</span>—integrating technical excellence with the discipline of a captain to build stronger organizations.
+        </div>
+    </section>
+
+    <section id="work">
+        <span class="section-label">Selected Work</span>
+        <div class="work-grid">
+            <div class="work-card reveal">
+                <div class="image-slot">[ Image: Robotics Competition ]</div>
+                <div class="work-info">
+                    <h3>FTC Ex Nihilo Captaincy</h3>
+                    <p>Directing team strategy, hardware scouting, and engineering design cycles for Team 10539.</p>
+                </div>
+            </div>
+            <div class="work-card reveal" style="transition-delay: 0.2s;">
+                <div class="image-slot">[ Image: Demographic Data ]</div>
+                <div class="work-info">
+                    <h3>UN Demographic Research</h3>
+                    <p>In-depth analysis of declining birth rates and global demographic shifts.</p>
+                </div>
+            </div>
+            <div class="work-card reveal">
+                <div class="image-slot">[ Image: Student Council Session ]</div>
+                <div class="work-info">
+                    <h3>Student Council Advocacy</h3>
+                    <p>Passed 20+ proposals including vending machines and lunch-time extensions at TBS.</p>
+                </div>
+            </div>
+            <div class="work-card reveal" style="transition-delay: 0.2s;">
+                <div class="image-slot">[ Image: Python Automation ]</div>
+                <div class="work-info">
+                    <h3>Technical Projects</h3>
+                    <p>Columbia University Python Certification & CAD development in Onshape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="athletics" style="background: #080808;">
+        <span class="section-label">Athletic Discipline</span>
+        <div class="athletics-flex">
+            <div class="stat-box reveal-left">
+                <div class="stat-row">
+                    <span class="stat-label">4x Track Captain</span>
+                    <span class="stat-value">Leadership</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">1-Mile PR</span>
+                    <span class="stat-value">4:47</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">2-Mile PR</span>
+                    <span class="stat-value">10:30</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Training Consistency</span>
+                    <span class="stat-value">Year-Round</span>
+                </div>
+            </div>
+            <div class="work-card reveal" style="flex: 1; min-width: 300px;">
+                <div class="image-slot" style="aspect-ratio: 1/1;">[ Image: Track Action Shot ]</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="reveal">
+            <p class="hero-tagline">Ready to Build?</p>
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">Let's get in touch.</h2>
+            <p style="color: var(--text-dim);">bchao@browning.edu</p>
+            <a href="mailto:bchao@browning.edu" class="cta-btn">Get In Touch</a>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer to trigger "Cool" animations
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
