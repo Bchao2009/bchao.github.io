@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon Chao | Digital Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --accent: #ffffff;
+            --text-main: #e0e0e0;
+            --text-dim: #888888;
+            --transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(10,10,10,1), rgba(10,10,10,0));
+        }
+
+        .logo {
+            font-weight: 900;
+            letter-spacing: -1px;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .hero-tagline {
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 10%;
+            min-height: 60vh;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #222;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: #444;
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Specific Sections */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 10%;
+            background: #000;
+            text-align: center;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">B.CHAO</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#engineering">Engineering</a>
+            <a href="#athletics">Athletics</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="reveal">
+            <p class="hero-tagline">Athlete • Growing Engineer • Tech Leader</p>
+            <h1>Brandon Chao</h1>
+            <p class="hero-desc">
+                Sophomore at <span class="highlight">The Browning School</span>. 
+                I bridge the gap between technical engineering and organizational leadership to build stronger communities. [cite: 3, 4]
+            </p>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">The Mission</h2>
+        <div class="grid">
+            <div class="reveal">
+                <p>Currently focused on combining <strong>leadership through technology</strong>. From the track to the robotics lab, I apply a discipline-first mindset to every problem I solve. </p>
+            </div>
+            <div class="reveal" style="transition-delay: 0.2s;">
+                <p>Specializing in <strong>UN Demographic Research</strong>, specifically analyzing declining birth rates and their impact on global socio-economic systems. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="leadership" style="background: #0f0f0f;">
+        <h2 class="section-title">Student Leadership</h2>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>20+ Proposals Passed</h3>
+                <p>As a 2-year Student Council Representative at TBS, I have successfully advocated for and implemented 20+ policy changes. [cite: 14, 5]</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>Core Acquisitions</h3>
+                <p>Led the proposals for the acquisition of a school vending machine, cereal machine, and the successful extension of student lunch times. </p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.2s;">
+                <h3>Org Captaincy</h3>
+                <p>Captain of <strong>Ex Nihilo</strong>, driving team strategy and community outreach initiatives. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="engineering">
+        <h2 class="section-title">Technical Foundations</h2>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Code & Data</h3>
+                <p>Completed <strong>Columbia University Intro to Python</strong>. Proficient in scouting analytics and Google Sheets for team strategy. [cite: 5, 13]</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>CAD & Design</h3>
+                <p>Fundamentals in <strong>Onshape</strong> and engineering design processes. Applying these skills to robotics scouting and hardware evolution. [cite: 5, 13]</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="athletics" style="background: #0f0f0f;">
+        <h2 class="section-title">Athletic Discipline</h2>
+        <div class="reveal">
+            <p>4x Track Captain. Long distance specialist focused on the 1-mile and 2-mile events. </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value">4:47</span>
+                    <span class="hero-tagline">1-Mile PR</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">10:30</span>
+                    <span class="hero-tagline">2-Mile PR</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="reveal">
+            <h2>Let's connect.</h2>
+            <p>Bchao@browning.edu</p>
+            <a href="mailto:bchao@browning.edu" class="contact-btn">Get In Touch</a>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
