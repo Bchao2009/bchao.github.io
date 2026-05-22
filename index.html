@@ -48,9 +48,39 @@
         .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
 
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
+        /* Split Flex Layout for Header Text + Image Side-by-Side */
+        header { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 10%; 
+            gap: 4rem;
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 4/5; /* Premium vertical portrait ratio */
+            background: #161616;
+            border-radius: 16px;
+            border: 1px solid #222;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .hero-img:hover { border-color: #555; }
+
         .hero-tagline { color: var(--text-dim); text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 1rem; }
-        h1 { font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 900; line-height: 0.9; margin-bottom: 2rem; letter-spacing: -3px; }
+        h1 { font-size: clamp(3.5rem, 5vw, 5.5rem); font-weight: 900; line-height: 0.9; margin-bottom: 2rem; letter-spacing: -3px; }
         .hero-desc { max-width: 650px; font-size: 1.25rem; color: var(--text-dim); font-weight: 300; }
         .highlight { color: var(--accent); font-weight: 700; }
 
@@ -100,6 +130,18 @@
         .get-in-touch:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
         .email-link { font-size: 1.2rem; color: var(--text-dim); text-decoration: none; display: block; margin-bottom: 1rem; }
 
+        /* Responsive Breakpoint: Stacks columns cleanly on tablet & mobile */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                justify-content: center;
+                height: auto;
+                padding: 140px 10% 60px 10%;
+                gap: 3rem;
+            }
+            .hero-image-wrapper { width: 100%; }
+            .hero-img { max-width: 100%; }
+        }
         @media (max-width: 768px) { .nav-links { display: none; } .work-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -116,12 +158,16 @@
     </nav>
 
     <header>
-        <div class="reveal">
+        <div class="hero-content reveal">
             <p class="hero-tagline">Sophomore @ TBS • Athlete • Growing Engineer</p>
             <h1>Leading Through<br>Technology.</h1>
             <p class="hero-desc">
                 Focusing on the intersection of <span class="highlight">engineering excellence</span> and <span class="highlight">community leadership</span> to build a high-performance organization.
             </p>
+        </div>
+
+        <div class="hero-image-wrapper reveal-right">
+            <img src="PASTE_YOUR_HERO_IMAGE_LINK_HERE" alt="Brandon Chao Portrait" class="hero-img">
         </div>
     </header>
 
