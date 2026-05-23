@@ -100,6 +100,9 @@
         .work-item h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         .work-item p { color: var(--text-dim); font-size: 0.95rem; }
 
+        /* Inline Carousel Image State Helper */
+        .robotics-slide.active-slide { opacity: 1 !important; }
+
         /* Athletics Section */
         .athletics-container { display: flex; flex-wrap: wrap; gap: 4rem; align-items: center; }
         .athletics-stats { flex: 1; min-width: 300px; }
@@ -107,9 +110,18 @@
         .stat-name { color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
         .stat-value { font-size: 2rem; font-weight: 900; color: var(--accent); }
 
-        /* Stats Grid */
+        /* Stats Grid & Resume Grid Layouts */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .card { background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid #222; transition: var(--transition); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; color: var(--accent); }
+        .card ul { list-style: none; color: var(--text-dim); font-size: 0.95rem; }
+        .card ul li { margin-bottom: 0.75rem; position: relative; padding-left: 1.2rem; }
+        .card ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+        /* Resume Meta Header Text Layout */
+        .resume-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; color: var(--text-dim); font-size: 0.95rem; }
+        .resume-meta a { color: var(--text-main); text-decoration: none; border-bottom: 1px solid #444; transition: 0.3s; }
+        .resume-meta a:hover { border-color: var(--accent); color: var(--accent); }
 
         /* Contact Footer */
         footer { padding: 120px 10%; border-top: 1px solid #222; text-align: center; }
@@ -154,6 +166,7 @@
             <a href="#work">Work</a>
             <a href="#athletics">Athletics</a>
             <a href="#leadership">Leadership</a>
+            <a href="#resume">Resume</a>
         </div>
     </nav>
 
@@ -167,7 +180,7 @@
         </div>
 
         <div class="hero-image-wrapper reveal-right">
-            <img src="https://i.postimg.cc/SK4CW9t9/Screenshot-2026-05-22-at-4-02-33-PM-fotor-2026052216432.png" alt="Brandon Chao Portrait" class="hero-img">
+            <img src="PASTE_YOUR_HERO_IMAGE_LINK_HERE" alt="Brandon Chao Portrait" class="hero-img">
         </div>
     </header>
 
@@ -182,8 +195,9 @@
         <div class="section-title">Recent Work</div>
         <div class="work-grid">
             <div class="work-item reveal">
-                <div class="work-image">
-                    <img src="https://i.postimg.cc/xjKCmdz2/image.png" alt="FTC Robotics Team Build" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="work-image" style="position: relative;">
+                    <img class="robotics-slide active-slide" src="PASTE_YOUR_ROBOTICS_LINK_1_HERE" alt="FTC Robotics Team Build 1" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; transition: opacity 1s ease-in-out;">
+                    <img class="robotics-slide" src="PASTE_YOUR_ROBOTICS_LINK_2_HERE" alt="FTC Robotics Team Build 2" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out;">
                 </div>
                 <h3>FTC Ex Nihilo Org</h3>
                 <p>Leading as Captain of Team 10539. Managing engineering design cycles and implementing advanced scouting systems.</p>
@@ -199,7 +213,7 @@
 
             <div class="work-item reveal">
                 <div class="work-image">
-                    <img src="https://i.postimg.cc/ZR31drGn/Screenshot-2026-05-22-at-2-33-06-PM.png" alt="Robot Front Hood Assembly CAD Model" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://i.postimg.cc/ZR31drGn/Screenshot-2026-05-22-at-2-33-06-PM.png" alt="Robot Front Hood Assembly CAD Model" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <h3>Robot Shooter Mechanism</h3>
                 <p>Engineered and customized a high-velocity shooter component using CAD. Developed precise geometry to optimize launch consistency and physical velocity during match play.</p>
@@ -207,7 +221,7 @@
 
             <div class="work-item reveal" style="transition-delay: 0.1s;">
                 <div class="work-image">
-                    <img src="https://i.postimg.cc/50Nx5Km2/Screenshot-2026-05-22-at-2-20-52-PM.png" alt="News Analyzer Tool Interface" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://i.postimg.cc/50Nx5Km2/Screenshot-2026-05-22-at-2-20-52-PM.png" alt="News Analyzer Tool Interface" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <h3>Brearley Hackathon Winner</h3>
                 <p>Won 1st place by engineering a software-based bias detector system. Designed the architecture to evaluate textual content and surface hidden algorithmic or data prejudices.</p>
@@ -235,7 +249,7 @@
             </div>
             <div class="athletics-image reveal-right" style="flex: 1; min-width: 300px;">
                 <div class="work-image" style="aspect-ratio: 1/1;">
-                    <img src="https://i.postimg.cc/43Dsh4Sb/Screenshot-2026-05-22-at-3-42-11-PM.png" alt="Brandon Chao Running Track Meet" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="" alt="Brandon Chao Running Track Meet" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -255,6 +269,76 @@
             <div class="card reveal" style="transition-delay: 0.2s;">
                 <h3>Academic Core</h3>
                 <p>Managing a rigorous load including Chemistry, Accelerated Algebra 2, and Engineering Principles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div class="section-title">Resume</div>
+        <div class="reveal">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem; letter-spacing: -1px;">Nate Chao</h2>
+            <div class="resume-meta">
+                <span>Email: <a href="mailto:nchao@browning.edu">nchao@browning.edu</a></span>
+                <span>GitHub: <a href="https://github.com/CSE-10-C/Nates-Class-Repository" target="_blank">CSE-10-C/Nates-Class-Repository</a></span>
+            </div>
+        </div>
+
+        <div class="grid" style="align-items: start;">
+            <div class="card reveal">
+                <h3>Education</h3>
+                <p style="color: var(--text-main); font-weight: 700; margin-bottom: 0.25rem;">The Browning School</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">10th Grade Student & Class Representative</p>
+
+                <h3>Clubs & Activities</h3>
+                <ul>
+                    <li>Debate</li>
+                    <li>Robotics</li>
+                    <li>Green Team</li>
+                    <li>Varsity Track & Field</li>
+                    <li>Varsity Cross Country</li>
+                </ul>
+            </div>
+
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>Awards & Certifications</h3>
+                <ul>
+                    <li>9th Grade High Honor Roll Certificate</li>
+                    <li>Grade 8 Art Award</li>
+                    <li>Columbia University Certificate of Completion (Python Programming)</li>
+                    <li>Multiple Varsity Track & Field MVP awards + co-captain roles</li>
+                    <li>Multiple Varsity Cross Country MVP awards + co-captain roles</li>
+                </ul>
+            </div>
+
+            <div class="card reveal" style="transition-delay: 0.2s;">
+                <h3>Volunteer Experience</h3>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li><strong>Intrepid Museum:</strong> Volunteered at a sporting event.</li>
+                    <li><strong>Ironstrength fitness event:</strong> Managed sponsorships, social media photography, and led workouts.</li>
+                </ul>
+
+                <h3>Selected Projects</h3>
+                <ul>
+                    <li><strong>1v1 Fighting Game (Pygame):</strong> Built core mechanics & physics.</li>
+                    <li><strong>Motorized Cardboard G Wagon:</strong> Uses hydraulics to power a crane system.</li>
+                    <li><strong>Motorized Cardboard Dog:</strong> Engineering build integrated with motion controls and coding elements.</li>
+                    <li><strong>NC State University 6-Foot Banner:</strong> Served as the lead artist for the painted project.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reveal" style="margin-top: 5rem;">
+            <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-dim); margin-bottom: 2rem;">Resume Images & Certificates</h4>
+            <div class="work-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="work-image" style="aspect-ratio: 4/3;">
+                    <img src="PASTE_CERTIFICATE_LINK_1_HERE" alt="Columbia University Python Certificate" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="work-image" style="aspect-ratio: 4/3;">
+                    <img src="PASTE_CERTIFICATE_LINK_2_HERE" alt="High Honor Roll Certificate" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div class="work-image" style="aspect-ratio: 4/3;">
+                    <img src="PASTE_CERTIFICATE_LINK_3_HERE" alt="NC State Banner Photo" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
             </div>
         </div>
     </section>
@@ -279,6 +363,18 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el) => observer.observe(el));
+
+        // Two-Image Shuffle Carousel Logic for Ex Nihilo Org
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.robotics-slide');
+
+        setInterval(() => {
+            if (slides.length > 0) {
+                slides[currentSlideIndex].classList.remove('active-slide');
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                slides[currentSlideIndex].classList.add('active-slide');
+            }
+        }, 4000); // Swaps every 4 seconds
     </script>
 </body>
 </html>
